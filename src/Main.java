@@ -1,12 +1,11 @@
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Задание 1.1
-        System.out.println("Задание 1.1");
+
+        // Задание 1.2
+        System.out.println("Задание 1.2");
 
         Product cucumbers = new Product("Огурцы", 60.0f, 1);
         Product tomatoes= new Product("Помидоры", 230.0f, 2);
@@ -23,8 +22,7 @@ public class Main {
         //Product tomatoes2= new Product("Помидоры", 280.0f, 5);
        // productList.addProduct(tomatoes2);
 
-        // Задание 2.1
-        System.out.println("Задание 2.1");
+
 
         Recipe recipe = new Recipe("Салат", Set.of(cucumbers, tomatoes));
         Recipe recipe1 = new Recipe("Яблочное варенье", Set.of(apples, sugar));
@@ -40,15 +38,26 @@ public class Main {
             System.out.println(recipeOut);
 
 
+
+
+
         // Задание 2.2
         System.out.println("Задание 2.2");
         numbersSetRemoveEven();
 
         // Задание 3.2
-        System.out.println("Задание 2.2");
+        System.out.println("Задание 3.2");
         MultiplicationTable multiplicationTable = new MultiplicationTable();
         for (Task outTask : multiplicationTable.getTasks())
             System.out.println(outTask);
+
+        // Задание 3.3
+        System.out.println("Задание 3.3");
+
+        Passport ivanov = new Passport(596623541, "Иванов", "Иван", null,
+                LocalDate.of(2011, 7, 28));
+        System.out.println(ivanov);
+
 
 
     }
@@ -69,6 +78,10 @@ public class Main {
         }
         System.out.println(numbers);
 
+
+
     }
+
+
 
 }
