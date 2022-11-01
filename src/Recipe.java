@@ -1,12 +1,14 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 public class Recipe {
     private final String name;
     private final float price;
-    private final Set<Product> products;
+    private final HashMap<Product, Integer> products;
 
-    public Recipe(String name, Set<Product> products) {
+    public Recipe(String name, HashMap<Product, Integer> products) {
         if (name == null || name.isBlank() || products == null || products.size() == 0) {
             throw new IllegalArgumentException("Не заполнены все поля");
         }
@@ -15,7 +17,7 @@ public class Recipe {
         this.products = products;
     }
 
-    public Recipe(String name, float price, Set<Product> products) {
+    public Recipe(String name, float price, HashMap<Product, Integer> products) {
         if (name == null || name.isBlank() || products == null || products.size() == 0) {
             throw new IllegalArgumentException("Не заполнены все поля");
         }
@@ -28,22 +30,22 @@ public class Recipe {
         return name;
     }
 
-    public Set<Product> getProducts() {
+    public HashMap<Product, Integer> getProducts() {
         return products;
     }
 
     public float getRecipePrice() {
         float sum = 0;
-        for (Product product:products) {
-            sum += product.getPrice();
+        for (Map.Entry<Product, Integer>  product : this.products.entrySet()) {
+            sum += product.getKey().getPrice() * product.getValue();
         }
         return sum;
     }
 
-    public float getRecipePrice(Set<Product> products) {
+    public float getRecipePrice(HashMap<Product, Integer>  products) {
         float sum = 0;
-        for (Product product:products) {
-            sum += product.getPrice();
+        for (Map.Entry<Product, Integer>  product : products.entrySet()) {
+            sum += product.getKey().getPrice() * product.getValue();
         }
         return sum;
     }

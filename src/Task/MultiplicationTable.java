@@ -1,3 +1,7 @@
+package Task;
+
+import Task.Task;
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -20,7 +24,7 @@ public class MultiplicationTable {
 
     @Override
     public String toString() {
-        return "MultiplicationTable{" +
+        return "Task.MultiplicationTable{" +
                 "tasks=" + tasks +
                 '}';
     }

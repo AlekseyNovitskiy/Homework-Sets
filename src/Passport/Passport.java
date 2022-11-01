@@ -1,3 +1,5 @@
+package Passport;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -64,7 +66,7 @@ public class Passport {
 
     @Override
     public String toString() {
-        return "Passport{" +
+        return "Passport.Passport{" +
                 "number=" + number +
                 ", lastName='" + lastName + '\'' +
                 ", name='" + name + '\'' +

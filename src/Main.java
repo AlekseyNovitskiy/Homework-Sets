@@ -3,6 +3,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        // Задание 1.1
+        System.out.println("Задание 1.1");
+
+        TelephoneDirectory map = new TelephoneDirectory();
+
+        System.out.println(map);
 
         // Задание 1.2
         System.out.println("Задание 1.2");
@@ -23,11 +29,22 @@ public class Main {
        // productList.addProduct(tomatoes2);
 
 
+        HashMap<Product, Integer> forEveryRecipe = new HashMap<>();
+        forEveryRecipe.put(cucumbers, 2);
+        forEveryRecipe.put(tomatoes, 3);
 
-        Recipe recipe = new Recipe("Салат", Set.of(cucumbers, tomatoes));
-        Recipe recipe1 = new Recipe("Яблочное варенье", Set.of(apples, sugar));
-        Recipe recipe2 = new Recipe("Грушевое варенье", Set.of(pear, sugar));
-        Recipe recipeTest = new Recipe("Яблочное варенье", Set.of(apples, pear, sugar));
+        Recipe recipe = new Recipe("Салат", forEveryRecipe);
+        forEveryRecipe.clear();
+        forEveryRecipe.put(apples, 25);
+        forEveryRecipe.put(sugar, 1);
+
+        Recipe recipe1 = new Recipe("Яблочное варенье", forEveryRecipe);
+        forEveryRecipe.clear();
+        forEveryRecipe.put(pear, 40);
+        forEveryRecipe.put(sugar, 1);
+
+        Recipe recipe2 = new Recipe("Грушевое варенье", forEveryRecipe);
+        //Recipe recipeTest = new Recipe("Яблочное варенье", Set.of(apples, pear, sugar));
 
         RecipeList allRecipe = new RecipeList();
         allRecipe.addRecipe(Set.of(recipe,recipe1,recipe2));
@@ -37,51 +54,89 @@ public class Main {
         for (Recipe recipeOut : allRecipe.getListRecipe())
             System.out.println(recipeOut);
 
+        //задание 1.3
+        System.out.println("Задание 1.3");
+
+        ArbitraryMaps arbitraryMap = new ArbitraryMaps();
+        arbitraryMap.setArbitraryMap("str2",1);
+        //arbitraryMap.setArbitraryMap("str1",2);
+        arbitraryMap.setArbitraryMap("str1",5);
 
 
 
+        //Задание 2.1
+        System.out.println("Задание 2.1");
 
-        // Задание 2.2
-        System.out.println("Задание 2.2");
-        numbersSetRemoveEven();
+        Map<String, List<Integer>> nameKeyForList = new HashMap<>();
+        Random r = new Random();
+        nameKeyForList.put("Земля", List.of(r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)));
+        nameKeyForList.put("Меркурий", List.of(r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)));
+        nameKeyForList.put("Венера", List.of(r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)));
+        nameKeyForList.put("Марс", List.of(r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)));
+        nameKeyForList.put("Юпитер", List.of(r.nextInt(1000),r.nextInt(1000),r.nextInt(1000)));
 
-        // Задание 3.2
-        System.out.println("Задание 3.2");
-        MultiplicationTable multiplicationTable = new MultiplicationTable();
-        for (Task outTask : multiplicationTable.getTasks())
-            System.out.println(outTask);
-
-        // Задание 3.3
-        System.out.println("Задание 3.3");
-
-        Passport ivanov = new Passport(596623541, "Иванов", "Иван", null,
-                LocalDate.of(2011, 7, 28));
-        System.out.println(ivanov);
-
-
-
-    }
-
-    private static void numbersSetRemoveEven() {
-        Set<Integer> numbers = new HashSet<>();
-        Random random = new Random();
-        for (int i = 0; i < 20; i++) {
-            numbers.add(random.nextInt(1000));
+        Map<String, Integer> nameKeyForSum = new HashMap<>();
+        for (Map.Entry<String, List<Integer>>  currentMapElement : nameKeyForList.entrySet()) {
+            int sum = 0;
+            for (int currentValues : currentMapElement.getValue())
+            {
+                sum+=currentValues;
+            }
+            nameKeyForSum.put(currentMapElement.getKey(),sum);
         }
-        System.out.println(numbers);
-        Iterator<Integer> iterator = numbers.iterator();
-        while (iterator.hasNext()) {
-            Integer next = iterator.next();
-            if (next % 2 != 0) {
-                iterator.remove();
+
+        for (Map.Entry<String, Integer>  currentMapElement : nameKeyForSum.entrySet()) {
+            System.out.println("Элемент с ключем: " + currentMapElement.getKey()  + ". Имеет значение " + currentMapElement.getValue());
+        }
+        System.out.println();
+
+
+        //Задание 2.2
+        System.out.println("Задание 2.2");
+        Map<Integer, String> countKeyMap = new LinkedHashMap<>();
+        while (countKeyMap.size()<10) {
+            Random random = new Random();
+            switch (countKeyMap.size()) {
+                case 0:
+                    countKeyMap.put(random.nextInt(100), "Сон Е Джин");
+                    break;
+                case 1:
+                    countKeyMap.put(random.nextInt(100), "Ким Го Ын");
+                    break;
+                case 2:
+                    countKeyMap.put(random.nextInt(100), "Со Йе Джи");
+                    break;
+                case 3:
+                    countKeyMap.put(random.nextInt(100), "Пак Мин Ён");
+                    break;
+                case 4:
+                    countKeyMap.put(random.nextInt(100), "Чо Бо А");
+                    break;
+                case 5:
+                    countKeyMap.put(random.nextInt(100), "Ли Со Гён");
+                    break;
+                case 6:
+                    countKeyMap.put(random.nextInt(100), "Сюзи");
+                    break;
+                case 7:
+                    countKeyMap.put(random.nextInt(100), "Ким Со Ён");
+                    break;
+                case 8:
+                    countKeyMap.put(random.nextInt(100), "Мун Га Ён");
+                    break;
+                case 9:
+                    countKeyMap.put(random.nextInt(100), "Мун Чэ Вон");
+                    break;
+                default:
+                    System.out.println("Заполнено");
             }
         }
-        System.out.println(numbers);
 
-
-
+        for (Map.Entry<Integer, String>  currentMapElement : countKeyMap.entrySet()) {
+            System.out.println("Элемент с ключем: " + currentMapElement.getKey()  + ". Имеет значение " + currentMapElement.getValue());
+        }
+        System.out.println();
     }
-
 
 
 }
